@@ -31,6 +31,7 @@
 "scripts": {
   "start": "set PORT=3002 && react-scripts start",
   "build": "react-scripts build",
+  "postinstall": "shx chmod -R 755 ./node_modules/.bin",
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build",
   "test": "react-scripts test",
@@ -57,6 +58,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4",
+    "shx": "^0.4.0",
     "tailwindcss": "^4.1.8"
   }
 }
