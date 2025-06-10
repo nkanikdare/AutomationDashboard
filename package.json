@@ -28,15 +28,22 @@
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"
   },
-"scripts": {
-  "start": "set PORT=3002 && react-scripts start",
-  "build": "react-scripts build",
-  "postinstall": "shx chmod -R 755 ./node_modules/.bin",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-},
+  "scripts": {
+    "start": "set PORT=3002 && react-scripts start",
+    "build": "react-scripts build",
+    "postinstall": "shx chmod -R 755 ./node_modules/.bin",
+    "vercel-build": "shx chmod -R 755 ./node_modules/.bin && react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "shx": "^0.4.0",
+    "tailwindcss": "^4.1.8"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -50,15 +57,7 @@
       "not op_mini all"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 chrome version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.4",
-    "shx": "^0.4.0",
-    "tailwindcss": "^4.1.8"
   }
 }
