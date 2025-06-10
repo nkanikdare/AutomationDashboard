@@ -7,7 +7,7 @@ app.use(cors());
 
 app.get("/data", (req, res) => {
   try {
-    const filePath = "//i9996/Dataset/Test/test.xlsx"; // Ensure this file exists
+    const filePath = "//i9996/Dataset/Test/AutomationDetails.xlsx"; // Ensure this file exists
     const workbook = xlsx.readFile(filePath);
     const sheetNames = workbook.SheetNames;
 
