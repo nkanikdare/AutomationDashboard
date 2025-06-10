@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AutomationDashboard/static/css/main.153a7214.css",
+    "main.js": "/AutomationDashboard/static/js/main.805b3151.js",
+    "index.html": "/AutomationDashboard/index.html",
+    "main.153a7214.css.map": "/AutomationDashboard/static/css/main.153a7214.css.map",
+    "main.805b3151.js.map": "/AutomationDashboard/static/js/main.805b3151.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.153a7214.css",
+    "static/js/main.805b3151.js"
+  ]
+}
