@@ -1,0 +1,300 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  ComposedChart,
+  Bar,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import "./Dashboard.css";
+
+const Dashboard = () => {
+  const [data, setData] = useState([]);
+  const [activeTab, setActiveTab] = useState("");
+  const [selectedRelease, setSelectedRelease] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    axios
+      .get("http://localhost:5006/data")
+      .then((response) => {
+        if (!response.data || !Array.isArray(response.data)) {
+          console.error("Invalid data format:", response.data);
+          return;
+        }
+        setData(response.data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  const getFilteredData = (tool, release) => {
+    if (!data || !Array.isArray(data)) return [];
+    return data.flatMap((sheet) =>
+      Array.isArray(sheet.rows)
+        ? sheet.rows
+            .filter(
+              (row) =>
+                row.automationTool?.trim() === tool &&
+                (release === "" || row.release === release)
+            )
+            .reverse()
+        : []
+    );
+  };
+
+  const getAvailableReleases = () => {
+    const releases = data.flatMap((sheet) =>
+      sheet.rows ? sheet.rows.map((row) => row.release) : []
+    );
+    return [...new Set(releases)];
+  };
+
+  const handleReleaseChange = (e) => {
+    setSelectedRelease(e.target.value);
+  };
+
+  return (
+    <div className="dashboard-container">
+      <h2>🚀 Automation Dashboard</h2>
+
+      <div className="tabs-container">
+        {["Playwright", "Selenium", "Sikuli"].map((tool) => (
+          <button
+            key={tool}
+            className={`tab-button ${activeTab === tool ? "active" : ""}`}
+            onClick={() => {
+              setActiveTab(tool);
+              setSelectedRelease("");
+            }}
+          >
+            {tool}
+          </button>
+        ))}
+      </div>
+
+      {activeTab ? (
+        <>
+          <div className="filter-container">
+  <label htmlFor="release-select">Filter by Release:</label>
+  <select
+    id="release-select"
+    value={selectedRelease}
+    onChange={handleReleaseChange}
+  >
+    {/* Placeholder option (disabled) */}
+    <option value="" disabled hidden>
+      Select Release
+    </option>
+    {/* Optional: allow users to reset filter */}
+    <option value="">All Releases</option>
+    {getAvailableReleases().map((release, idx) => (
+      <option key={idx} value={release}>
+        {release}
+      </option>
+    ))}
+  </select>
+</div>
+
+          <div className="graph-container">
+            {getFilteredData(activeTab, selectedRelease).length === 0 ? (
+              <p className="no-data-message">
+                ⚠ No data available for {activeTab}{" "}
+                {selectedRelease && `- ${selectedRelease}`}
+              </p>
+            ) : (
+              <ResponsiveContainer width="100%" height={350}>
+                <ComposedChart
+                  data={getFilteredData(activeTab, selectedRelease)}
+                  margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="#bdc3c7" />
+                  <XAxis
+                    dataKey="wcBuild"
+                    stroke="#000"
+                    tick={{
+                      fontSize: 12,
+                      fill: "#2e7d32",
+                      fontWeight: "bold",
+                    }}
+                  />
+                  <YAxis
+                    yAxisId="left"
+                    orientation="left"
+                    stroke="#00897b"
+                    tick={{
+                      fontSize: 12,
+                      fill: "#00897b",
+                      fontWeight: "bold",
+                    }}
+                    tickFormatter={(value) => `${value}%`}
+                  />
+                  <YAxis
+                    yAxisId="right"
+                    orientation="right"
+                    stroke="#2e7d32"
+                    tick={{
+                      fontSize: 12,
+                      fill: "#2e7d32",
+                      fontWeight: "bold",
+                    }}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#f9f9f9",
+                      border: "none",
+                      borderRadius: 10,
+                    }}
+                    wrapperStyle={{ fontSize: "14px" }}
+                  />
+                  <Legend
+                    wrapperStyle={{ fontSize: "14px" }}
+                    verticalAlign="bottom"
+                  />
+                  <Bar
+                    yAxisId="right"
+                    dataKey="totalCount"
+                    name="Test Case Count"
+                    fill="#1565C0"
+                    barSize={20}
+                    radius={[5, 5, 0, 0]}
+                  />
+                  <Bar
+                    yAxisId="right"
+                    dataKey="passed"
+                    name="Test Case Pass Count"
+                    fill="#2E7D32"
+                    barSize={20}
+                    radius={[5, 5, 0, 0]}
+                  />
+                  <Bar
+                    yAxisId="right"
+                    dataKey="initialfailed"
+                    name="Initial Failed Count"
+                    fill="#C62828"
+                    barSize={20}
+                    radius={[5, 5, 0, 0]}
+                  />
+                  <Bar
+                    yAxisId="right"
+                    dataKey="skipped"
+                    name="Test Case Skipped Count"
+                    fill="#F9A825"
+                    barSize={20}
+                    radius={[5, 5, 0, 0]}
+                  />
+                  <Line
+                    yAxisId="left"
+                    type="monotone"
+                    dataKey="passRate"
+                    name="Pass Rate"
+                    stroke="#00897b"
+                    strokeWidth={5}
+                    dot={{ r: 4, strokeWidth: 4, fill: "#00897b" }}
+                    activeDot={{ r: 8, strokeWidth: 4, fill: "#004d40" }}
+                  />
+                </ComposedChart>
+              </ResponsiveContainer>
+            )}
+          </div>
+
+          <div className="table-responsive">
+            <h3>
+              {activeTab} Test Data {selectedRelease && `- ${selectedRelease}`}
+            </h3>
+            {getFilteredData(activeTab, selectedRelease).length === 0 ? (
+              <p className="no-data-message">
+                ⚠ No test data available for {activeTab}{" "}
+                {selectedRelease && `- ${selectedRelease}`}
+              </p>
+            ) : (
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>WC - Build Number</th>
+                    <th>Pass Rate</th>
+                    <th>Test Case Count</th>
+                    <th>Test Case Pass Count</th>
+                    <th>Initial Failed Count</th>
+                    <th>Test Case Fail Count</th>
+                    <th>Test Case Skipped Count</th>
+                    <th>Run Status</th>
+                    <th>Runtime</th>
+                    <th>Server URL</th>
+                    <th>Result Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {getFilteredData(activeTab, selectedRelease).map(
+                    (row, idx) => (
+                      <tr
+                        key={idx}
+                        className={
+                          row.runStatus
+                            ?.trim()
+                            .toLowerCase()
+                            .replace(/[-_]/g, " ") === "in progress"
+                            ? "highlight-row"
+                            : ""
+                        }
+                      >
+                        <td>{row.wcBuild ?? "N/A"}</td>
+                        <td>
+                          {row.passRate !== undefined &&
+                          row.passRate !== null
+                            ? `${row.passRate}%`
+                            : "N/A"}
+                        </td>
+                        <td>{row.totalCount ?? "N/A"}</td>
+                        <td>{row.passed ?? "N/A"}</td>
+                        <td>{row.initialfailed ?? "N/A"}</td>
+                        <td>{row.failed ?? "N/A"}</td>
+                        <td>{row.skipped ?? "N/A"}</td>
+                        <td>{row.runStatus ?? "N/A"}</td>
+                        <td>{row.runtime ?? "N/A"}</td>
+                        <td>
+                          <a
+                            href={row.serverUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            href={row.resultLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Report
+                          </a>
+                        </td>
+                      </tr>
+                    )
+                  )}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </>
+      ) : (
+        <div
+          className="placeholder-message"
+          style={{ textAlign: "center", marginTop: "50px" }}
+        >
+          Please select an automation tool from above.
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Dashboard;

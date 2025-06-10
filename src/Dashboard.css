@@ -1,0 +1,431 @@
+/* ==========================================================================  
+   Global Styles  
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background-color: #e0f7e1;
+  color: #041400;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  font-size: 16px; /* Base font size for better readability */
+  line-height: 1.6; /* Improved line height for better readability */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for background and text color changes */
+}
+
+.dashboard-container {
+  max-width: 1400px;
+  margin: 20px auto;      /* Reduced margin for a more compact layout */
+  padding: 10px;          /* Compact padding */
+  background: #f8f8f7;    /* Light background for better contrast */
+  border-radius: 20px;    /* Rounded corners for a modern look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for background and shadow changes */
+  font-family: 'Roboto', sans-serif; /* Using Roboto font for consistency */
+  font-weight: 800; /* Normal weight for body text */
+  font-size: 1rem; /* Base font size for better readability */
+  color: #041400; /* Dark text for better contrast */
+  text-align: center; /* Centered text for better layout */
+  padding: 20px; /* Increased padding for a more spacious layout */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  border: 4px solid #011103; /* Darker border for better contrast */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite; /* Subtle gradient animation for a modern touch */
+}
+
+/* ==========================================================================  
+   Page Title Styling  
+   ========================================================================== */
+h2 {
+  font-size: 3.2rem;
+  font-weight: bold;
+  text-align: center;
+  /* Muted green gradient */
+  background: linear-gradient(90deg, #6fdc8a, #02611e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+  /* Reduced margin for a more compact layout */
+  padding: 5px;          /* Compact padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase; /* Uppercase for page title */
+  text-decoration-color: #011103; /* Darker underline for better contrast */
+  text-decoration-thickness: 2px; /* Thicker underline for emphasis */
+  text-underline-offset: 4px; /* Offset for better visibility */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  animation: gradientAnimation 8s ease infinite;
+}
+
+/* ==========================================================================  
+   Tabs Styling  
+   ========================================================================== */
+.tabs-container {
+  width: 100%;
+  max-width: 1200px; /* Limiting the width for better readability */
+  margin: 20px auto; /* Centering the tabs container */
+  padding: 10px; /* Compact padding */
+  background: #f8f8f7; /* Light background for better contrast */
+  border-radius: 20px; /* Rounded corners for a modern look */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  /* Reduced margin for a more compact layout */
+  padding: 10px;          /* Compact padding */
+}
+
+.tab-button {
+  background: #02611e;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 8px;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(2, 97, 30, 0.2);
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase; /* Uppercase for tab buttons */
+  text-decoration: none; /* No underline for tab buttons */
+  text-decoration-color: #fff; /* White underline for tab buttons */
+  text-decoration-thickness: 2px; /* Thicker underline for emphasis */
+  text-underline-offset: 4px; /* Offset for better visibility */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+.tab-button.active {
+  /* Changed active tab from a bright green to a more muted tone */
+  background: #6fdc8a;
+  box-shadow: 0px 4px 8px rgba(2, 97, 30, 0.5);
+  color: #011103; /* Darker text for better contrast */
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: underline;
+  /* Underline for active tab */
+  text-decoration-color: #011103; /* Darker underline for better contrast */
+  text-decoration-thickness: 2px; /* Thicker underline for emphasis */
+  text-underline-offset: 4px; /* Offset for better visibility */
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px 18px; /* Slightly larger padding for active tab */
+  font-weight: bold; /* Bold text for active tab */
+  font-size: 1.05rem; /* Slightly larger font size for active tab */
+  text-transform: uppercase; /* Uppercase for active tab */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+  border: 2px solid #011103; /* Darker border for active tab */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+.tab-button:hover {
+  background: #6fdc8a;
+  /* Muted green for hover effect */
+  box-shadow: 0px 4px 8px rgba(2, 97, 30, 0.3);
+  color: #011103; /* Darker text for better contrast */
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: underline;
+  /* Underline for hover effect */
+  text-decoration-color: #011103; /* Darker underline for better contrast */
+  text-decoration-thickness: 2px; /* Thicker underline for emphasis */
+  text-underline-offset: 4px; /* Offset for better visibility */
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px 18px; /* Slightly larger padding for hover effect */
+  font-weight: bold; /* Bold text for hover effect */
+  font-size: 1.05rem; /* Slightly larger font size for hover effect */
+  text-transform: uppercase; /* Uppercase for hover effect */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+  border: 2px solid #011103; /* Darker border for hover effect */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+/* ==========================================================================  
+   Filter / Dropdown Styling  
+   ========================================================================== */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f8f7; /* Light background for better contrast */
+  border-radius: 20px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 10px; /* Compact padding */
+  font-family: 'Roboto', sans-serif; /* Using Roboto font for consistency */
+  font-weight: 800; /* Normal weight for body text */
+  font-size: 1rem; /* Base font size for better readability */
+  color: #041400; /* Dark text for better contrast */
+  border: 2px solid #011103; /* Darker border for better contrast */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite; /* Subtle gradient animation for a modern touch */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  width: 100%;
+  max-width: 800px; /* Limiting the width for better readability */
+  margin: 15px auto;
+  text-align: center;
+}
+
+.filter-container label {
+  color: #033f15; /* Darker green for better contrast */
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif; /* Using Roboto font for consistency */
+  font-size: 1rem; /* Base font size for better readability */
+  display: inline-block;
+  margin-right: 10px; /* Spacing between label and select */
+  text-transform: uppercase; /* Uppercase for labels */
+  text-decoration-color: #011103; /* Darker underline for better contrast */
+  text-decoration-thickness: 2px; /* Thicker underline for emphasis */
+  text-underline-offset: 4px; /* Offset for better visibility */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  padding: 5px; /* Compact padding for labels */
+  background: rgba(255, 255, 255, 0.1); /* Slightly transparent background for labels */
+  border-radius: 5px; /* Rounded corners for labels */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for labels */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for background and shadow changes */
+  font-weight: bold; /* Bold text for labels */
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+.filter-container select {
+  background: #f8f8f7; /* Light background for better contrast */
+  color: #033f15; /* Darker green for better contrast */
+  font-weight: bold; /* Bold text for better readability */
+  font-family: 'Roboto', sans-serif; /* Using Roboto font for consistency */
+  font-size: 1rem; /* Base font size for better readability */
+  border: 2px solid #011103; /* Darker border for better contrast */
+  border-radius: 5px; /* Rounded corners for a modern look */
+  padding: 8px 12px; /* Compact padding for select */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for background and shadow changes */
+  appearance: none; /* Removing default browser styles */
+  -webkit-appearance: none; /* Removing default browser styles for WebKit browsers */
+  -moz-appearance: none; /* Removing default browser styles for Mozilla browsers */
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"%3E%3Cpath fill="%23033f15" d="M5 0L0 5h10L5 0z"/%3E%3C/svg%3E'); /* Custom dropdown arrow */
+  background-repeat: no-repeat;
+  background-position: right 20px center; /* Positioning the custom dropdown arrow */
+  background-size: 10px; /* Size of the custom dropdown arrow */
+  cursor: pointer; /* Indicating that the select is interactive */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  width: 100%; /* Full width for better usability */
+  max-width: 200px; /* Limiting the width for better readability */
+  margin: 0 10px; /* Spacing between select elements */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for background and shadow changes */
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  border: 1px solid #033f15;
+  border-radius: 5px;
+}
+
+/* ==========================================================================  
+   Graph and Chart Styling  
+   ========================================================================== */
+.graph-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto; /* Centering the graph container */
+  padding: 10px; /* Compact padding */
+  background: #f8f8f7; /* Light background for better contrast */
+  border-radius: 20px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for background and shadow changes */
+  font-family: 'Roboto', sans-serif; /* Using Roboto font for consistency */
+  font-weight: 800; /* Normal weight for body text */
+  font-size: 1rem; /* Base font size for better readability */
+  color: #041400; /* Dark text for better contrast */
+  text-align: center; /* Centered text for better layout */
+  padding: 20px; /* Increased padding for a more spacious layout */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  border: 2px solid #011103; /* Darker border for better contrast */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite; /* Subtle gradient animation for a modern touch */
+}
+
+/* For chart elements, we’ve adjusted the tick label colors to be a slightly darker, less bright green */
+.Recharts-responsive-container .recharts-cartesian-axis-tick tspan {
+  fill: #033f15; /* Darker green for better contrast */
+  font-size: 12px;
+  fill: #3c7a3e;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif; /* Using Roboto font for consistency */
+
+}
+
+/* ==========================================================================  
+   Table Styling  
+   ========================================================================== */
+.table-responsive {
+  margin-top: 10px;
+  overflow-x: auto;
+  box-shadow: 0 10px 15px rgba(4,46,13,0.05);
+  border-radius: 25px;
+  background: #eceeec;
+  padding: 10px;
+  /* Compact padding */
+  border: 2px solid #033f15; /* Darker border for better contrast */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite; /* Subtle gradient animation for a modern touch */
+  font-weight: 800; /* Normal weight for body text */
+  font-size: 1rem; /* Base font size for better readability */
+  color: #041400; /* Dark text for better contrast */
+  text-align: center; /* Centered text for better layout */
+  padding: 20px; /* Increased padding for a more spacious layout */
+  box-sizing: content-box; /* Ensuring padding and border are included in the element's total width and height */
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite; /* Subtle gradient animation for a modern touch */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 25px;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Roboto', sans-serif; /* Using Roboto font for consistency */
+  font-weight: 800; /* Normal weight for body text */
+  font-size: 1rem; /* Base font size for better readability */
+  color: #041400; /* Dark text for better contrast */
+}
+
+.data-table thead th {
+  /* Using a slightly muted dark green */
+  background-color: #124a2c;
+  color: #f8f8f7;
+  padding: 10px 8px;
+  font-size: 0.95rem;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #d6e9d6;
+  /* Using a light green for even rows */
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  color: #033f15; /* Darker text for better contrast */
+  font-size: 0.9rem;
+  cursor: pointer; /* Indicating that rows are interactive */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  padding: 8px;
+  text-align: center;
+  /* Adding a hover effect for better interactivity */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.data-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+  /* Using white for odd rows */
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  color: #033f15; /* Darker text for better contrast */
+  font-size: 0.9rem;
+  cursor: pointer; /* Indicating that rows are interactive */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  padding: 8px;
+  text-align: center;
+  /* Adding a hover effect for better interactivity */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.data-table tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  color: #033f15; /* Darker text for better contrast */
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer; /* Indicating that cells are interactive */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #eceeec; /* Light background for cells */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Adding a hover effect for better interactivity */
+  padding: 10px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.data-table tbody tr:hover {
+  background-color: #cef1f0;
+  /* Muted light green for hover effect */
+  transform: scale(1.02);
+  /* Slightly enlarging the row on hover for better interactivity */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Rounded corners */
+.data-table tr:first-child th:first-child {
+  border-top-left-radius: 8px;
+}
+.data-table tr:first-child th:last-child {
+  border-top-right-radius: 8px;
+}
+.data-table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+.data-table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+/* ==========================================================================  
+   Highlight Row for "In Progress"  
+   ========================================================================== */
+.data-table tr.highlight-row,
+.data-table tr.highlight-row td {
+  background-color: #f0e48c !important;
+  font-weight: bold;
+  color: #033f15;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+/* ==========================================================================  
+   Mobile Adjustments  
+   ========================================================================== */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+  .tab-button {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+  .filter-container select {
+    font-size: 0.85rem;
+  }
+} 
+

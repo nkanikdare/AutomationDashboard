@@ -1,0 +1,163 @@
+/* ==========================================================================  
+   Global Styles  
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background-color: #e0f7e1;
+  /* Clean white background */
+  color: #041400;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ==========================================================================  
+   Page Title Styling  
+   ========================================================================== */
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(90deg, #2dfc12, #02611e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 40px;
+}
+
+/* ==========================================================================  
+   Card Styling  
+   ========================================================================== */
+
+.card {
+  width: 100;  
+  margin: 40px auto;
+  background-color: #b9ceb4;
+  border: 1px solid #011409;
+  border-radius: 20px;
+  margin-bottom: 60px;
+  box-shadow: 0 9px 6px rgba(86, 204, 115, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(38, 73, 29, 0.15);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #18490b, #1b8d3d);
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* ==========================================================================  
+   Chart Section Styling  
+   ========================================================================== */
+.chart-wrapper {
+  padding: 20px;
+  background: #dfe9d4;
+  border: 1px solid #063d0d;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================  
+   Table Styling  
+   ========================================================================== */
+.table-responsive {
+  margin-top: 20px;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px rgba(4, 46, 13, 0.05);
+  border-radius: 10px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.table thead th {
+  background-color: #1a5715;
+  color: #f8f8f7;
+  padding: 15px;
+  font-size: 1.1rem;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #d6e9d6;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #cef1f0;
+}
+
+/* Rounded corners for the table */
+.table tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+/* ==========================================================================  
+   Form Elements & Link Styling  
+   ========================================================================== */
+input[type="file"],
+select {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  margin: 25px auto;
+  padding: 10px;
+  border: 1px solid #033f15;
+  border-radius: 5px;
+}
+
+a {
+  color: #01180a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
