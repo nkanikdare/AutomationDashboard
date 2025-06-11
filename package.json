@@ -2,21 +2,28 @@
   "name": "playwright-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nkanikdare.github.io/AutomationDashboard",
+  "type": "module",
+  "engines": {
+    "node": "18.x",
+    "npm": ">=9"
+  },
+  "scripts": {
+    "start": "cross-env PORT=3002 react-scripts start",
+    "build": "react-scripts build",
+    "postinstall": "if [ \"$VERCEL\" != \"1\" ]; then shx chmod -R 755 ./node_modules/.bin; else echo 'Skipping chmod in Vercel'; fi",
+    "vercel-build": "npm run build",  
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.1.1",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^1.9.0",
     "bootstrap": "^5.3.6",
     "chart.js": "^4.4.9",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "gh-pages": "^6.3.0",
     "multer": "^1.4.5-lts.2",
     "plotly.js": "^3.0.1",
     "react": "^19.1.0",
@@ -26,38 +33,21 @@
     "react-scripts": "5.0.1",
     "recharts": "^2.15.3",
     "web-vitals": "^2.1.4",
-  "xlsx": "^0.18.5"
-},
-
-  "scripts": {
-    "start": "cross-env PORT=3002 react-scripts start",
-    "build": "react-scripts build",
-    "postinstall": "[ \"$VERCEL\" != \"1\" ] && shx chmod -R 755 ./node_modules/.bin || echo 'Skipping chmod in Vercel environment'",
-    "vercel-build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "xlsx": "^0.18.5",
+    "serverless-http": "^3.0.0"       
   },
-
   "devDependencies": {
+    "shx": "^0.3.4",                 
+    "cross-env": "^7.0.3",           
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4",
-    "shx": "^0.3.4",
     "tailwindcss": "^4.1.8"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version"]
   }
 }
