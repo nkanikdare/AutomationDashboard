@@ -1,12 +1,13 @@
-import React from "react";
-import Dashboard from "./Dashboard";
+import React from 'react';
+import './App.css';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <Dashboard />
+    <div className="App">
+      <h1>Welcome to the Automation Dashboard</h1>
+      <p>This is your dashboard app deployed on Vercel.</p>
     </div>
   );
-};
+}
 
 export default App;

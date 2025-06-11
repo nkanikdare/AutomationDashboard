@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/AutomationDashboard/static/css/main.153a7214.css",
-    "main.js": "/AutomationDashboard/static/js/main.8d1188f3.js",
+    "main.css": "/AutomationDashboard/static/css/main.f855e6bc.css",
+    "main.js": "/AutomationDashboard/static/js/main.9a080106.js",
+    "static/js/453.47d3d3b7.chunk.js": "/AutomationDashboard/static/js/453.47d3d3b7.chunk.js",
     "index.html": "/AutomationDashboard/index.html",
-    "main.153a7214.css.map": "/AutomationDashboard/static/css/main.153a7214.css.map",
-    "main.8d1188f3.js.map": "/AutomationDashboard/static/js/main.8d1188f3.js.map"
+    "main.f855e6bc.css.map": "/AutomationDashboard/static/css/main.f855e6bc.css.map",
+    "main.9a080106.js.map": "/AutomationDashboard/static/js/main.9a080106.js.map",
+    "453.47d3d3b7.chunk.js.map": "/AutomationDashboard/static/js/453.47d3d3b7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.153a7214.css",
-    "static/js/main.8d1188f3.js"
+    "static/css/main.f855e6bc.css",
+    "static/js/main.9a080106.js"
   ]
 }
